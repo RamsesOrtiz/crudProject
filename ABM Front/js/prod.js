@@ -42,7 +42,7 @@ function get() {
 
     var url = "http://localhost:8080/api/products";
 
-    var table = document.getElementById('productsTable');
+    var table = document.getElementById('productTable');
 
     table.style.display = "";
 
@@ -55,12 +55,12 @@ function get() {
                     if (data.length > 0) {
                         var temp = "";
                         data.forEach((itemData) => {
-                            temp += "<tr id='" + itemData.id_cliente + "'>";
-                            temp += "<td>" + itemData.id_cliente + "</td>";
-                            temp += "<td>" + itemData.nombre + "</td>";
-                            temp += "<td>" + itemData.apellido + "</td>";
-                            temp += "<td>" + itemData.telefono + "</td>";
-                            temp += "<td>" + "<button class='noselect' id='deleteClient' onclick='deleteClient(" + itemData.id_cliente + ")'><span class='text'>Borrar</span><span class='icon'><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'></path></svg></span></button>" + "</td></tr>";
+                            temp += "<tr id='" + itemData.id_producto + "'>";
+                            temp += "<td>" + itemData.id_producto + "</td>";
+                            temp += "<td>" + itemData.descripcion + "</td>";
+                            temp += "<td>" + itemData.precio + "</td>";
+                            temp += "<td>" + itemData.categoria + "</td>";
+                            temp += "<td>" + "<button class='noselect' id='deleteClient' onclick='deleteClient(" + itemData.id_producto + ")'><span class='text'>Borrar</span><span class='icon'><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'></path></svg></span></button>" + "</td></tr>";
                         });
                         document.getElementById('dataClients').innerHTML = temp;
                     }
@@ -83,13 +83,16 @@ function getClient() {
                     console.log(data);
 
                     if (res.status == 200) {
-                        document.getElementById('editDescription').value = data.nombre;
-                        document.getElementById('editPrice').value = data.apellido;
-                        document.getElementById('editCategory').value = data.telefono;
+                        document.getElementById('editDescription').value = data.descripcion;
+                        document.getElementById('editPrice').value = data.precio;
+                        document.getElementById('editCategory').value = data.categoria;
                     } else {
 
                         manageModal('modalEdit');
                         document.getElementById('editIdProduct').value = "";
+                        document.getElementById('editDescription').value = "";
+                        document.getElementById('editPrice').value = "";
+                        document.getElementById('editCategory').value = "";
 
                     }
                 }

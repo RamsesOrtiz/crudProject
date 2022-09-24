@@ -90,6 +90,9 @@ function getClient() {
 
                         manageModal('modalEdit');
                         document.getElementById('editIdClient').value = "";
+                        document.getElementById('editName').value = "";
+                        document.getElementById('editLastName').value = "";
+                        document.getElementById('editPhone').value = "";
 
                     }
                 }
