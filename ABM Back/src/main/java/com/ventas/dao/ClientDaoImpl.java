@@ -3,7 +3,6 @@ package com.ventas.dao;
 import com.ventas.exceptions.NotFoundException;
 import com.ventas.model.Cliente;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -18,8 +17,6 @@ public class ClientDaoImpl implements IClientDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private static final String CLIENT_NOT_FOUND_MESSAGE = "No se encontro un cliente con el id: ";
-
     public void create(Cliente cliente) {
 
         entityManager.persist(cliente);
@@ -29,7 +26,7 @@ public class ClientDaoImpl implements IClientDao {
     @Query(nativeQuery = true)
     public List<Cliente> getAllClients() {
 
-        String hql = "FROM Cliente as cli ORDER BY cli.id_cliente";
+        String hql = "FROM Cliente ORDER BY id_cliente";
 
         return (List<Cliente>) entityManager.createQuery(hql).getResultList();
     }

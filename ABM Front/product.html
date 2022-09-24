@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Ventas</title>
+    <link rel="icon" href="img/CRUDVentas.ico">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="head">Productos</div>
+    <div id="modalEdit" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Editar Producto</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Error: </b>Producto no encontrado</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter">Intente con un ID existente</h4>
+        </div>
+    </div>
+    <div id="modalEditOk" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Editar Producto</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Ok: </b>Producto editado exitosamente</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <div id="modalSaveOk" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Guardar Producto</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Ok: </b>Producto guardado exitosamente</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <div id="modalBorrar" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader"></h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Ok: </b>Producto borrado exitosamente</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <div id="modalError" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Editar Producto</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Error: </b>No se han ingresado los datos necesarios</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <form id="formCreate" method="POST">
+        <fieldset id="saveClients" class="input-group">
+            <h3 id="guardarClientes">Guardar Productos</h3>
+            <label class="user-label">Descripcion</label><input type="text" id="description" class="input" name="description"
+                pattern="*[A-Za-z]{50}" required="" autocomplete="off"><br>
+            <label class="user-label">Precio</label><input type="number" id="price" class="input" name="price"
+                pattern="*[0-9]" required="" autocomplete="off"><br>
+            <label class="user-label">Categoría</label><input type="text" id="category" class="input" name="category"
+                pattern="*[A-Za-z]{50}" required="" autocomplete="off"><br>
+            <button type="button" id="submit" class="btn" onclick="send()"><span class="text">Guardar</span></button>
+            <button type="reset" class="btn"><span class="text">Limpiar</span></button>
+        </fieldset>
+    </form>
+    <form id="formEdit" method="POST">
+        <fieldset id="editClients">
+            <h3 id="guardarClientes">Editar Productos</h3>
+            <p id="findId">(Buscar por ID)</p>
+            <label class="user-label">ID</label><input type="tel" id="editIdProduct" class="input" name="id_cliente"
+                pattern="*[0-9]" required autocomplete="off"><br>
+            <label class="user-label">Descripción</label><input type="text" id="editDescription" class="input" name="description"
+                pattern="*[A-Za-z]{50}" required autocomplete="off"><br>
+            <label class="user-label">Precio</label><input type="text" id="editPrice" class="input" name="price"
+                pattern="*[0-9]" required autocomplete="off"><br>
+            <label class="user-label">Categoría</label><input type="tel" id="editCategory" class="input" name="category"
+                pattern="*[A-Za-z]{50}" required autocomplete="off"><br>
+            <button type="button" id="submit" class="btn" onclick="getClient()"><span
+                    class="text">Obtener</span></button>
+            <button type="button" id="submit" class="btn" onclick="edit()"><span class="text">Guardar</span></button>
+            <button type="reset" class="btn"><span class="text">Limpiar</span></button>
+        </fieldset>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/prod.js"></script>
+    <div id="getAllClients">
+        <hr>
+        <h3 id="guardarClientes">Listado de Productos</h3>
+        <button id="getClients" class="btn" onclick="get()"><span class="text">Mostrar</span></button>
+        <button id="resetClients" class="btn" onclick="closeTable()"><span class="text">Ocultar</span></button>
+        <div class="clientes">
+            <table class="clientsTable" id="productTable">
+                <thead>
+                    <tr id="headTable">
+                        <th>ID</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                    </tr>
+                </thead>
+                <tbody id="dataClients">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+</html>

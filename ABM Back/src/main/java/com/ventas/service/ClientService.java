@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CrudService implements ICrudService{
+public class ClientService implements IClientService {
 
     @Autowired
     private IClientDao clienteDao;

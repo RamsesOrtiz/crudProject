@@ -1,14 +1,14 @@
 function send() {
 
-    var nombre = document.getElementById('name');
-    var apellido = document.getElementById('lastName');
-    var telefono = document.getElementById('phone');
+    var description = document.getElementById('description');
+    var price = document.getElementById('price');
+    var category = document.getElementById('category');
 
-    if (nombre.value == "" || apellido.value == "" || telefono.value == "") {
+    if (description.value == "" || price.value == "" || category.value == "") {
         manageModal('modalError');
     } else {
 
-        var url = 'http://localhost:8080/api/createClient'
+        var url = 'http://localhost:8080/api/createProduct'
 
         var elements = document.getElementById("formCreate").elements;
         var data = {};
@@ -34,15 +34,15 @@ function send() {
                 document.querySelector('form').addEventListener('button', manageModal('modalSaveOk'));
             }
         );
-        blankItems('name', 'lastName', 'phone');
+        blankItems('description', 'price', 'category');
     }
 }
 
 function get() {
 
-    var url = "http://localhost:8080/api/clients";
+    var url = "http://localhost:8080/api/products";
 
-    var table = document.getElementById('clientTable');
+    var table = document.getElementById('productTable');
 
     table.style.display = "";
 
@@ -55,12 +55,12 @@ function get() {
                     if (data.length > 0) {
                         var temp = "";
                         data.forEach((itemData) => {
-                            temp += "<tr id='" + itemData.id_cliente + "'>";
-                            temp += "<td>" + itemData.id_cliente + "</td>";
-                            temp += "<td>" + itemData.nombre + "</td>";
-                            temp += "<td>" + itemData.apellido + "</td>";
-                            temp += "<td>" + itemData.telefono + "</td>";
-                            temp += "<td>" + "<button class='noselect' id='deleteClient' onclick='deleteClient(" + itemData.id_cliente + ")'><span class='text'>Borrar</span><span class='icon'><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'></path></svg></span></button>" + "</td></tr>";
+                            temp += "<tr id='" + itemData.id_producto + "'>";
+                            temp += "<td>" + itemData.id_producto + "</td>";
+                            temp += "<td>" + itemData.descripcion + "</td>";
+                            temp += "<td>" + itemData.precio + "</td>";
+                            temp += "<td>" + itemData.categoria + "</td>";
+                            temp += "<td>" + "<button class='noselect' id='deleteClient' onclick='deleteClient(" + itemData.id_producto + ")'><span class='text'>Borrar</span><span class='icon'><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'></path></svg></span></button>" + "</td></tr>";
                         });
                         document.getElementById('dataClients').innerHTML = temp;
                     }
@@ -72,9 +72,9 @@ function get() {
 
 function getClient() {
 
-    var id = document.getElementById("editIdClient").value;
+    var id = document.getElementById("editIdProduct").value;
 
-    var url = ("http://localhost:8080/api/client/" + id);
+    var url = ("http://localhost:8080/api/product/" + id);
 
     fetch(url).then(
         res => {
@@ -83,16 +83,16 @@ function getClient() {
                     console.log(data);
 
                     if (res.status == 200) {
-                        document.getElementById('editName').value = data.nombre;
-                        document.getElementById('editLastName').value = data.apellido;
-                        document.getElementById('editPhone').value = data.telefono;
+                        document.getElementById('editDescription').value = data.descripcion;
+                        document.getElementById('editPrice').value = data.precio;
+                        document.getElementById('editCategory').value = data.categoria;
                     } else {
 
                         manageModal('modalEdit');
-                        document.getElementById('editIdClient').value = "";
-                        document.getElementById('editName').value = "";
-                        document.getElementById('editLastName').value = "";
-                        document.getElementById('editPhone').value = "";
+                        document.getElementById('editIdProduct').value = "";
+                        document.getElementById('editDescription').value = "";
+                        document.getElementById('editPrice').value = "";
+                        document.getElementById('editCategory').value = "";
 
                     }
                 }
@@ -104,13 +104,13 @@ function getClient() {
 
 function edit() {
 
-    var url = 'http://localhost:8080/api/updateClient'
+    var url = 'http://localhost:8080/api/updateProduct'
 
-    var nombre = document.getElementById('editName');
-    var apellido = document.getElementById('editLastName');
-    var telefono = document.getElementById('editPhone');
+    var description = document.getElementById('editDescription');
+    var price = document.getElementById('editPrice');
+    var category = document.getElementById('editCategory');
 
-    if (nombre.value == "" || apellido.value == "" || telefono.value == "") {
+    if (description.value == "" || price.value == "" || category.value == "") {
         manageModal('modalError');
     } else {
 
@@ -138,13 +138,13 @@ function edit() {
             }
         );
 
-        blankItems('editIdClient', 'editName', 'editLastName', 'editPhone');
+        blankItems('editIdProduct', 'editDescription', 'editPrice', 'editCategory');
     }
 }
 
 function deleteClient(id) {
 
-    var url = ("http://localhost:8080/api/deleteClient/" + id);
+    var url = ("http://localhost:8080/api/deleteProduct/" + id);
 
     fetch(url, {
         method: "POST",
@@ -215,7 +215,7 @@ function closeTable() {
 
     var closeBtn = document.getElementById('resetClients');
 
-    var table = document.getElementById('clientTable')
+    var table = document.getElementById('productTable')
 
     closeBtn.onclick = function () {
         table.style.display = "none";

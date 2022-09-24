@@ -6,7 +6,7 @@ import com.ventas.exceptions.NotFoundException;
 import com.ventas.model.Cliente;
 
 
-public interface ICrudService{
+public interface IClientService {
 
     List<Cliente> getAllClients();
 

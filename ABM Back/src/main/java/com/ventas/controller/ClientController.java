@@ -2,7 +2,7 @@ package com.ventas.controller;
 
 import com.ventas.exceptions.NotFoundException;
 import com.ventas.model.Cliente;
-import com.ventas.service.ICrudService;
+import com.ventas.service.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,42 +16,40 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api")
-public class CrudController {
+public class ClientController {
 
     @Autowired
-    private ICrudService iCrudService;
+    private IClientService iClientService;
 
     @CrossOrigin
     @GetMapping("/client/{id}")
     public ResponseEntity<Object> getClientById(@PathVariable("id") Integer id_cliente) throws NotFoundException {
 
-        Cliente clientResp = iCrudService.getClientById(id_cliente);
+        Cliente clienteResp = iClientService.getClientById(id_cliente);
 
-        if(clientResp != null){
-            return new ResponseEntity<>(clientResp, HttpStatus.OK);
+        if (clienteResp != null) {
+            return new ResponseEntity<>(clienteResp, HttpStatus.OK);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("Error", "Client ID " + id_cliente + " not found"));
         }
-
-
     }
 
     @CrossOrigin
     @GetMapping("/clients")
-    public ResponseEntity<List<Cliente>> getAllClients(){
+    public ResponseEntity<List<Cliente>> getAllClients() {
 
-        List<Cliente> clientes = iCrudService.getAllClients();
+        List<Cliente> clientes = iClientService.getAllClients();
 
         return new ResponseEntity<>(clientes, HttpStatus.OK);
     }
 
     @CrossOrigin
     @PostMapping(value = "/createClient", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_XML_VALUE})
-    public ResponseEntity<Object> addClient(@RequestBody Cliente cliente, UriComponentsBuilder builder){
+    public ResponseEntity<Object> addClient(@RequestBody Cliente cliente, UriComponentsBuilder builder) {
 
-        boolean flag = iCrudService.addClient(cliente);
+        boolean flag = iClientService.addClient(cliente);
 
-        if(!flag){
+        if (!flag) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("Error", "Client not created"));
         }
 
@@ -66,7 +64,7 @@ public class CrudController {
     @PostMapping("/updateClient")
     public ResponseEntity<Object> updateClient(@RequestBody Cliente cliente) throws NotFoundException {
 
-        iCrudService.updateClient(cliente);
+        iClientService.updateClient(cliente);
 
         return ResponseEntity.status(HttpStatus.OK).body(Collections.singletonMap("Ok", "Client ID "
                 + cliente.getId_cliente() + " successfully updated"));
@@ -76,11 +74,9 @@ public class CrudController {
     @PostMapping("/deleteClient/{id}")
     public ResponseEntity<Object> deleteClient(@PathVariable("id") Integer id_cliente) throws NotFoundException {
 
-        iCrudService.deleteClient(id_cliente);
+        iClientService.deleteClient(id_cliente);
 
         return ResponseEntity.status(HttpStatus.OK).body(Collections.singletonMap("Ok", "Client ID "
                 + id_cliente + " successfully deleted"));
     }
-
-
 }
