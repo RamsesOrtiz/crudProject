@@ -1,0 +1,12 @@
+com\ventas\controller\ClientController.class
+com\ventas\dao\IClientDao.class
+com\ventas\model\Product.class
+com\ventas\service\IProductService.class
+com\ventas\controller\ProductController.class
+com\ventas\service\IClientService.class
+com\ventas\service\ClientService.class
+com\ventas\dao\ClientDaoImpl.class
+com\ventas\dao\ProductDaoImpl.class
+com\ventas\model\Client.class
+com\ventas\service\ProductService.class
+com\ventas\dao\IProductDao.class

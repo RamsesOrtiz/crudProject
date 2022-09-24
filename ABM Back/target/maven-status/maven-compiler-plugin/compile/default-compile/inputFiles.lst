@@ -1,0 +1,17 @@
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\service\IProductService.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\exceptions\NotFoundException.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\service\ProductService.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\controller\ProductController.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\exceptions\VentasExceptionHandler.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\dao\IClientDao.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\model\Client.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\App.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\dao\ProductDaoImpl.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\dao\IProductDao.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\dao\ClientDaoImpl.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\bean\ErrorResponse.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\service\ClientService.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\controller\ClientController.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\service\IClientService.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\configuration\SecurityConfig.java
+C:\Users\Ramses\Desktop\CRUD Project\ABM Back\src\main\java\com\ventas\model\Product.java
