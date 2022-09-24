@@ -42,6 +42,11 @@ function get() {
 
     var url = "http://localhost:8080/api/clients";
 
+    var table = document.getElementById('clientTable');
+
+    table.style.display = "";
+
+
     fetch(url).then(
         res => {
             res.json().then(
@@ -56,7 +61,6 @@ function get() {
                             temp += "<td>" + itemData.apellido + "</td>";
                             temp += "<td>" + itemData.telefono + "</td>";
                             temp += "<td>" + "<button class='noselect' id='deleteClient' onclick='deleteClient(" + itemData.id_cliente + ")'><span class='text'>Borrar</span><span class='icon'><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z'></path></svg></span></button>" + "</td></tr>";
-                            /*temp += "<td>" + "<button id='deleteClient' onclick='deleteClient(" + itemData.id_cliente + ")'>" + "Borrar" + "</button>" + "</td></tr>";*/
                         });
                         document.getElementById('dataClients').innerHTML = temp;
                     }
@@ -161,21 +165,12 @@ function manageModal(idModal) {
 
     var modal = document.getElementById(idModal);
 
-    // Get the button that opens the modal
-
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     var span1 = document.getElementsByClassName("close")[1];
     var span2 = document.getElementsByClassName("close")[2];
     var span3 = document.getElementsByClassName("close")[3];
     var span4 = document.getElementsByClassName("close")[4];
 
-    // When the user clicks on the button, open the modal
-    /*btn.onclick = function () {
-        modal.style.display = "block";
-    }*/
-
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
     }
@@ -196,7 +191,6 @@ function manageModal(idModal) {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -212,5 +206,16 @@ function blankItems(id1, id2, id3, id4) {
     document.getElementById(id2).value = "";
     document.getElementById(id3).value = "";
     document.getElementById(id4).value = "";
+}
+
+function closeTable() {
+
+    var closeBtn = document.getElementById('resetClients');
+
+    var table = document.getElementById('clientTable')
+
+    closeBtn.onclick = function () {
+        table.style.display = "none";
+    }
 }
 
