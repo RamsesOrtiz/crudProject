@@ -22,16 +22,15 @@ function send() {
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" }
         }).then(
-            function response() {
-
-                response => response.text()
+            response => {
+                response.text()
                 console.log(this.responseText);
-            }
-        ).then(
-            data => {
-                console.log(data);
-                get();
-                document.querySelector('form').addEventListener('button', manageModal('modalSaveOk'));
+                if (response.status == 200) {
+                    get();
+                    manageModal('modalSaveOk');
+                } else {
+                    manageModal('modalErrorServ');
+                }
             }
         );
         blankItems('description', 'price', 'category');
@@ -126,15 +125,15 @@ function edit() {
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" }
         }).then(
-            function response() {
-
-                response => response.text()
+            response => {
+                response.text()
                 console.log(this.responseText);
-            }
-        ).then(
-            data => {
-                console.log(data);
-                document.getElementById('formEdit').addEventListener('button', manageModal('modalEditOk'));
+                if (response.status == 200) {
+                    get();
+                    manageModal('modalEditOk');
+                } else {
+                    manageModal('modalErrorServ');
+                }
             }
         );
 
@@ -173,6 +172,7 @@ function manageModal(idModal) {
     var span2 = document.getElementsByClassName("close")[2];
     var span3 = document.getElementsByClassName("close")[3];
     var span4 = document.getElementsByClassName("close")[4];
+    var span5 = document.getElementsByClassName("close")[5];
 
     span.onclick = function () {
         modal.style.display = "none";
@@ -191,6 +191,10 @@ function manageModal(idModal) {
     }
 
     span4.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    span5.onclick = function () {
         modal.style.display = "none";
     }
 
