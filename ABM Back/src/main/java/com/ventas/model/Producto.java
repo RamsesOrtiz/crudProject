@@ -21,7 +21,7 @@ public class Producto implements Serializable {
     @Column(name="categoria")
     private String categoria;
 
-    public Producto(){};
+    public Producto(){}
 
     public Producto(String description, int price, String category) {
         this.descripcion = description;
