@@ -75,29 +75,41 @@ function getClient() {
 
     var url = ("http://localhost:8080/api/product/" + id);
 
-    fetch(url).then(
-        res => {
-            res.json().then(
-                data => {
-                    console.log(data);
+    var idProducto = document.getElementById('editIdProduct');
 
-                    if (res.status == 200) {
-                        document.getElementById('editDescription').value = data.descripcion;
-                        document.getElementById('editPrice').value = data.precio;
-                        document.getElementById('editCategory').value = data.categoria;
-                    } else {
+    var descripcion = document.getElementById('editDescription');
 
-                        manageModal('modalEdit');
-                        document.getElementById('editIdProduct').value = "";
-                        document.getElementById('editDescription').value = "";
-                        document.getElementById('editPrice').value = "";
-                        document.getElementById('editCategory').value = "";
+    var precio = document.getElementById('editPrice');
 
+    var categoria = document.getElementById('editCategory');
+
+    if (idProducto.value == "") {
+        manageModal('modalErrorLogin');
+    } else {
+        fetch(url).then(
+            res => {
+                res.json().then(
+                    data => {
+                        console.log(data);
+
+                        if (res.status == 200) {
+                            descripcion.value = data.descripcion;
+                            precio.value = data.precio;
+                            categoria.value = data.categoria;
+                        } else {
+
+                            manageModal('modalEdit');
+                            idProducto.value = "";
+                            descripcion.value = "";
+                            precio.value = "";
+                            categoria.value = "";
+
+                        }
                     }
-                }
-            )
-        }
-    )
+                )
+            }
+        )
+    }
 }
 
 
@@ -173,6 +185,7 @@ function manageModal(idModal) {
     var span3 = document.getElementsByClassName("close")[3];
     var span4 = document.getElementsByClassName("close")[4];
     var span5 = document.getElementsByClassName("close")[5];
+    var span6 = document.getElementsByClassName("close")[6];
 
     span.onclick = function () {
         modal.style.display = "none";
@@ -198,9 +211,14 @@ function manageModal(idModal) {
         modal.style.display = "none";
     }
 
+    span6.onclick = function () {
+        modal.style.display = "none";
+    }
+
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            console.log('click');
         }
     }
 

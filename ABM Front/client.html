@@ -10,6 +10,7 @@
 
 <body>
     <a href="home.html"><button type="button" id="submit" class="btn"><span class="text">Inicio</span></button></a>
+    <a href="index.html"><button type="button" id="submit" class="btn"><span class="text">Cerrar Sesión</span></button></a>
     <div id="head">Clientes</div>
     <div id="modalEdit" class="modal-content">
         <div class="modal-header">
@@ -83,6 +84,18 @@
             <h4 id="modalFooter"></h4>
         </div>
     </div>
+    <div id="modalErrorLogin" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Editar Cliente</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Error: </b>No se ha ingresado el ID Cliente</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
     <form id="formCreate" method="POST">
         <fieldset id="saveClients" class="input-group">
             <h3 id="guardarClientes">Guardar Clientes</h3>
@@ -117,7 +130,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="./js/app.js"></script>
     <div id="getAllClients">
-        <hr>
         <h3 id="guardarClientes">Listado de Clientes</h3>
         <button id="getClients" class="btn" onclick="get()"><span class="text">Mostrar</span></button>
         <button id="resetClients" class="btn" onclick="closeTable()"><span class="text">Ocultar</span></button>

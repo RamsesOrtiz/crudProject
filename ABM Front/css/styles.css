@@ -96,12 +96,7 @@ thead {
     width: auto;
 }
 
-#getAllClients {
-    text-align: center;
-    margin-top: 400px;
-}
-
-#getAllUsers {
+#getAllClients, #getAllUsers {
     text-align: center;
     margin-top: 500px;
 }

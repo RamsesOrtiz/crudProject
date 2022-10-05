@@ -75,29 +75,41 @@ function getClient() {
 
     var url = ("http://localhost:8080/api/client/" + id);
 
-    fetch(url).then(
-        res => {
-            res.json().then(
-                data => {
-                    console.log(data);
+    var idClient = document.getElementById('editIdClient');
 
-                    if (res.status == 200) {
-                        document.getElementById('editName').value = data.nombre;
-                        document.getElementById('editLastName').value = data.apellido;
-                        document.getElementById('editPhone').value = data.telefono;
-                    } else {
+    var nombre = document.getElementById('editName');
 
-                        manageModal('modalEdit');
-                        document.getElementById('editIdClient').value = "";
-                        document.getElementById('editName').value = "";
-                        document.getElementById('editLastName').value = "";
-                        document.getElementById('editPhone').value = "";
+    var apellido = document.getElementById('editLastName')
 
+    var telefono = document.getElementById('editPhone');
+
+    if (idClient.value == "") {
+        manageModal('modalErrorLogin');
+    } else {
+        fetch(url).then(
+            res => {
+                res.json().then(
+                    data => {
+                        console.log(data);
+
+                        if (res.status == 200) {
+                            nombre.value = data.nombre;
+                            apellido.value = data.apellido;
+                            telefono.value = data.telefono;
+                        } else {
+
+                            manageModal('modalEdit');
+                            idClient.value = "";
+                            nombre.value = "";
+                            apellido.value = "";
+                            telefono.value = "";
+
+                        }
                     }
-                }
-            )
-        }
-    )
+                )
+            }
+        )
+    }
 }
 
 
@@ -173,6 +185,7 @@ function manageModal(idModal) {
     var span3 = document.getElementsByClassName("close")[3];
     var span4 = document.getElementsByClassName("close")[4];
     var span5 = document.getElementsByClassName("close")[5];
+    var span6 = document.getElementsByClassName("close")[6];
 
     span.onclick = function () {
         modal.style.display = "none";
@@ -195,6 +208,10 @@ function manageModal(idModal) {
     }
 
     span5.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    span6.onclick = function () {
         modal.style.display = "none";
     }
 

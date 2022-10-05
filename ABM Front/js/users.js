@@ -155,7 +155,7 @@ function edit() {
             }
         );
 
-        blankItems('editIdProduct', 'name', 'lastName', 'username', 'password');
+        blankItems('editIdProduct', 'editName', 'editLastName', 'editUsername', 'editPassword');
     }
 }
 
