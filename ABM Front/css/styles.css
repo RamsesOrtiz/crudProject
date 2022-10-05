@@ -82,12 +82,8 @@ td {
 }
 
 fieldset {
-    height: 350px;
+    height: 380px;
     margin-bottom: 20px;
-}
-
-hr {
-    margin-top: 20px;
 }
 
 #guardarClientes {
@@ -103,6 +99,11 @@ thead {
 #getAllClients {
     text-align: center;
     margin-top: 400px;
+}
+
+#getAllUsers {
+    text-align: center;
+    margin-top: 500px;
 }
 
 .clientes {
