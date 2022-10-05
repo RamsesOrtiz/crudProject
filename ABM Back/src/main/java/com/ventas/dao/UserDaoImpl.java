@@ -39,13 +39,13 @@ public class UserDaoImpl implements IUserDao{
 
         Usuario userUpdate = getUserById(usuario.getId_usuario());
 
-        userUpdate.setNombre(userUpdate.getNombre());
+        userUpdate.setNombre(usuario.getNombre());
 
-        userUpdate.setApellido(userUpdate.getApellido());
+        userUpdate.setApellido(usuario.getApellido());
 
-        userUpdate.setUsername(userUpdate.getUsername());
+        userUpdate.setUsername(usuario.getUsername());
 
-        userUpdate.setPassword(userUpdate.getPassword());
+        userUpdate.setPassword(usuario.getPassword());
 
         entityManager.flush();
     }
