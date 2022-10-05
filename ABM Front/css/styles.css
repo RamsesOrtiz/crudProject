@@ -7,9 +7,17 @@ body {
 }
 
 #homeBody {
-    margin-top: 10%;
     text-align: center;
+    margin-top: 10%;
+    display: block;
 
+}
+
+#login {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #btnHome {
@@ -74,12 +82,8 @@ td {
 }
 
 fieldset {
-    height: 350px;
+    height: 380px;
     margin-bottom: 20px;
-}
-
-hr {
-    margin-top: 20px;
 }
 
 #guardarClientes {
@@ -95,6 +99,11 @@ thead {
 #getAllClients {
     text-align: center;
     margin-top: 400px;
+}
+
+#getAllUsers {
+    text-align: center;
+    margin-top: 500px;
 }
 
 .clientes {
@@ -239,7 +248,8 @@ label {
 #modalError,
 #modalBorrar,
 #modalSaveOk,
-#modalErrorServ {
+#modalErrorServ,
+#modalErrorLogin {
     display: none;
     position: fixed;
     margin-top: 120px;
