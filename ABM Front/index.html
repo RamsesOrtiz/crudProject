@@ -10,13 +10,66 @@
 
 <body>
     <div id="head">Sistema de Gestión</div>
-    <div id="homeBody">
-        <a href="client.html"><button type="button" id="btnHome" class="btn"><span
-                    class="text">Clientes</span></button></a>
-        <a href="product.html"><button type="button" id="btnHome" class="btn"><span
-                    class="text">Productos</span></button></a>
+    <div id="modalErrorServ" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Login Usuario</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Error: </b>Servidor no responde</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
     </div>
-
+    <div id="modalErrorLogin" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Login Usuario</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Error: </b>Usuario / Password no encontrado</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <div id="modalError" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Login Usuario</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Error: </b>Debe ingresar un Usuario / Password</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <div id="modalSaveOk" class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h3 id="modalHeader">Login Usuario</h3>
+        </div>
+        <div class="modal-body">
+            <p id="modalBody"><b>Ok: </b>Login exitoso</p>
+        </div>
+        <div class="modal-footer">
+            <h4 id="modalFooter"></h4>
+        </div>
+    </div>
+    <div id="login">
+        <form id="formCreate" method="POST">
+            <h3 id="guardarClientes">Iniciar Sesión</h3>
+            <label class="user-label">Usuario</label><input type="text" id="user" class="input"
+                name="username" pattern="*[A-Za-z]{50}" required="" autocomplete="off"><br>
+            <label class="user-label">Contraseña</label><input type="password" id="password" class="input" name="password"
+                pattern="*[0-9]" required="" autocomplete="off"><br>
+            <button type="button" id="submit" class="btn" onclick="login()"><span class="text">Login</span></button>
+            <button type="reset" class="btn"><span class="text">Limpiar</span></button>
+        </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 
